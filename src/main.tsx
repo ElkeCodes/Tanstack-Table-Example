@@ -53,28 +53,28 @@ function App() {
 
   const [data] = React.useState(() => makeData(100000));
 
-  const [sorting, setSorting] = React.useState<SortingState>([
-    { id: "lastName", desc: false },
-  ]);
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([
-    { id: "favoriteGenre", value: "Metal" },
-  ]);
-  const [pagination, setPagination] = React.useState<PaginationState>({
-    pageIndex: 20,
-    pageSize: 40,
-  });
+  // const [sorting, setSorting] = React.useState<SortingState>([
+  //   { id: "lastName", desc: false },
+  // ]);
+  // const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([
+  //   { id: "favoriteGenre", value: "Metal" },
+  // ]);
+  // const [pagination, setPagination] = React.useState<PaginationState>({
+  //   pageIndex: 20,
+  //   pageSize: 40,
+  // });
 
   const table = useReactTable({
     data,
     columns,
-    state: {
-      sorting,
-      columnFilters,
-      pagination,
-    },
-    onColumnFiltersChange: setColumnFilters,
-    onSortingChange: setSorting,
-    onPaginationChange: setPagination,
+    // state: {
+    //   sorting,
+    //   columnFilters,
+    //   pagination,
+    // },
+    // onColumnFiltersChange: setColumnFilters,
+    // onSortingChange: setSorting,
+    // onPaginationChange: setPagination,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),

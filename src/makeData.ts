@@ -24,16 +24,10 @@ const newPerson = (): Person => {
   };
 };
 
-export function makeData(...lens: number[]) {
-  const makeDataLevel = (depth = 0): Person[] => {
-    const len = lens[depth]!;
-    return range(len).map((d): Person => {
-      return {
-        ...newPerson(),
-        // subRows: lens[depth + 1] ? makeDataLevel(depth + 1) : undefined,
-      };
-    });
-  };
-
-  return makeDataLevel();
+export function makeData(len: number) {
+  return range(len).map((d): Person => {
+    return {
+      ...newPerson(),
+    };
+  });
 }

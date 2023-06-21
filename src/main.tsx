@@ -21,6 +21,8 @@ import {
 } from "@tanstack/react-table";
 import { makeData, Person } from "./makeData";
 
+const formatNumber = (n: number): string => n.toLocaleString("nl-BE");
+
 function App() {
   const columnHelper = createColumnHelper<Person>();
   const columns = React.useMemo<ColumnDef<Person>[]>(
@@ -140,9 +142,12 @@ function App() {
           {table
             .getRowModel()
             .rows.slice(0, 25)
-            .map((row) => {
+            .map((row, index) => {
               return (
-                <tr key={row.id}>
+                <tr
+                  key={row.id}
+                  className={index % 2 === 0 ? "bg-blue-200" : "bg-blue-100"}
+                >
                   {row.getVisibleCells().map((cell) => {
                     return (
                       <td key={cell.id}>
@@ -176,8 +181,8 @@ function App() {
         <span className="flex items-center gap-1">
           <div>Page</div>
           <strong>
-            {table.getState().pagination.pageIndex + 1} of{" "}
-            {table.getPageCount()}
+            {formatNumber(table.getState().pagination.pageIndex + 1)} of{" "}
+            {formatNumber(table.getPageCount())}
           </strong>
         </span>
         <button
@@ -195,7 +200,9 @@ function App() {
           ⏭️
         </button>
       </div>
-      <div>{table.getRowModel().rows.length} Rows</div>
+      <div>
+        {formatNumber(table.getFilteredRowModel().rows.length)} rows found
+      </div>
     </div>
   );
 }
